@@ -1,44 +1,86 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## `React 2020`
+React の環境構築と最新バージョンの React Router v6, Redux v4 を使います。また、Hooks, TypeScript でのコーディング、Storybook でのデザインガイドライン、jest で Unit Test を行います。
 
-## Available Scripts
+- React v16
+- Redux v4
+- React router v6 (new)
+- TypeScript
+- React Hooks
+- storybook
+- Material-UI v4
+- jest
 
-In the project directory, you can run:
 
-### `yarn start`
+## `Create-react-app`
+TypeScript を使用して、新しい Create React APP プロジェクトを始めます。
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+$ yarn create react-app my-app --template typescript
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### Create React App document
+https://create-react-app.dev/docs/adding-typescript/
 
-### `yarn test`
+#### React で TypeScript を使うためのチートシート
+https://github.com/typescript-cheatsheets/react#reacttypescript-cheatsheets
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## `Redux v4`
+```
+$ yarn add redux react-redux
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### React redux 7.2 Quick Start
+https://react-redux.js.org/introduction/quick-start
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## `React Router v6 new!!`
 
-### `yarn eject`
+```
+$ yarn add react-router@next react-router-dom@next history
+```
+※ 正式版が出た後は `@next` を削除してください。
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### バージョン6 の仕様以外の変更点
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- コードベースが TypeScript によって書き直されました。
+- バージョン5 までは純粋な JavaScript で型も DefinitelyTyped をインストールしていましたが、その必要もありません。
+- IE 11 より以前のバージョンはサポートしません。
+- React も Hooks が有効になった 16.8 より前のバージョンはサポートしません。
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+※ history パッケージが v6 では dependencies から外れているので入れる必要があります。正式版では変わる可能性はあります。
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### V6 Getting Started with React Router
+https://github.com/ReactTraining/react-router/blob/dev/docs/installation/getting-started.md
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## `Material UI v4`
+```
+yarn add @material-ui/core @material-ui/icons
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Material UI Document
+https://material-ui.com/ja/
+
+
+## `Storybook v6`
+Storybookが公式で出してるCLIを使えば簡単に作成することができます。--typeでcreate-react-app用に設定してくれます。
+
+```
+$ npx -p @storybook/cli sb init --type react_scripts
+```
+
+#### storybook-react
+https://github.com/storybookjs/storybook/blob/master/app/react/README.md
+
+
+## `Tools`
+開発に便利なツールです。
+
+### `React Developer Tools`
+Chrome extension  
+https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi
+
+### `Redux DevTools`
+Chrome extension  
+https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd
