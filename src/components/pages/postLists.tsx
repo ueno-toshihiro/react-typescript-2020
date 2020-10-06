@@ -1,15 +1,17 @@
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
 import { postData } from 'data/postData';
+import Grid from '@material-ui/core/Grid';
+import FeaturedPost from 'components/organisms/featuredPost';
 
-const PostLists: FC = ():JSX.Element => (
-  <ul>
-    {Object.entries(postData).map(([slug, { title }]) => (
-      <li key={slug}>
-        <Link to={`/posts/${slug}`}>{title}</Link>
-      </li>
-    ))}
-  </ul>
-)
+const PostLists: FC = ():JSX.Element => {
+
+  return (
+    <Grid container spacing={2}>
+      {Object.entries(postData).map(([slug, value]) => (
+        <FeaturedPost key={slug} { ...value } path={`/blog/${slug}`} />
+      ))}
+    </Grid>
+  )
+}
 
 export default PostLists;
