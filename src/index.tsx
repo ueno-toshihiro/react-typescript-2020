@@ -1,16 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { blogReducer, initialState } from './reducer';
 import * as serviceWorker from './serviceWorker';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
+const store = createStore(blogReducer, initialState);
+
 ReactDOM.render(
-  <React.StrictMode>
-    <CssBaseline>
-      <App />
-    </CssBaseline>
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Provider store={store}>
+    <React.StrictMode>
+      <CssBaseline>
+        <App />
+      </CssBaseline>
+    </React.StrictMode>
+  </Provider>,
+  document.getElementById('root') as HTMLElement,
 );
 
 // If you want your app to work offline and load faster, you can change

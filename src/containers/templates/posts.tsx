@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { FC, useEffect } from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getPosts } from '../../actions';
 import { Grid } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import PageHeader from 'components/organisms/pageHeader';
 import photo from 'static/images/park.jpg'
 
-const Posts = (): JSX.Element => {
+import { postData } from 'data/postData';
+
+const Posts: FC = (): JSX.Element => {
   const location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPosts(postData));
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <Grid container>

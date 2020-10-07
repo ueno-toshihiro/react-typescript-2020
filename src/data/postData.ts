@@ -3,26 +3,7 @@ import ReduxIcon from 'static/images/redux.png';
 import MUIIcon from 'static/images/material_ui.svg';
 import RouterIcon from 'static/images/react-router.svg';
 
-interface PostLists {
-  [id: string]: {
-    date: string;
-    description: string
-    image: string;
-    imageText: string;
-    linkText: string;
-    title: string;
-  }
-}
-
-interface News {
-  [id: string]: {
-    date: string;
-    description: string,
-    title: string;
-  }
-}
-
-interface NavigationItem {
+export interface NavigationItem {
   path: string;
   title: string;
 }
@@ -41,6 +22,17 @@ export const navigationItems: NavigationItem[] = [
     title: 'Blog',
   }
 ];
+
+export interface PostLists {
+  [id: string]: {
+    date: string;
+    description: string
+    image: string;
+    imageText: string;
+    linkText: string;
+    title: string;
+  }
+}
 
 export const postData: PostLists = {
   '1': {
@@ -77,7 +69,17 @@ export const postData: PostLists = {
   }
 };
 
-export const newsData: News = {
+type NewsItem = {
+  date: string;
+  description: string,
+  title: string;
+}
+
+export interface NewsList {
+  [id: string]: NewsItem;
+}
+
+export const newsData: NewsList = {
   '1': {
     date: '2020/10/05',
     description: 'react: 16.13.1 で Hooks を使いサイトを作成しました。',
@@ -96,6 +98,11 @@ export const newsData: News = {
   '4': {
     date: '2020/10/05',
     description: 'redux: 4.0 をインストールしました。',
+    title: 'Redux v4',
+  },
+  '6': {
+    date: '2020/10/07',
+    description: 'redux: 4.0 でサイトデータを Store に統一しました。',
     title: 'Redux v4',
   },
 };

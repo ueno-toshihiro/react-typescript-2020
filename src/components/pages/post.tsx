@@ -1,7 +1,10 @@
 import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import { postData } from 'data/postData';
+
+import { useSelector } from 'react-redux';
+import { BlogState } from 'reducer';
+
 import { useStyles } from 'components/styles';
 import { Grid, IconButton, Paper, Typography } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -9,9 +12,12 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 const Post: FC = ():JSX.Element => {
   const { slug } = useParams();
   const history = createBrowserHistory();
+  const postData = useSelector<BlogState, BlogState['postData']>((state) => state.postData);
+
   const post = postData[slug];
-  const { title, description } = post;
   const classes = useStyles();
+  const { title, description } = post;
+  
 
   return (
     <Grid item xs={12}>

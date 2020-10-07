@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from 'containers/templates/header';
-import Home from 'components/templates';
+import HomeContainer from 'containers/templates';
 import About from 'components/templates/about';
 import Posts from 'containers/templates/posts';
 import PostLists from 'components/pages/postLists';
@@ -14,7 +14,7 @@ const App = (): JSX.Element => (
       <Header />
       <Routes>
         <Route>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomeContainer />} />
           <Route path="about" element={<About />} />
           <Route path="blog" element={<Posts />}>
             <Route path="/" element={<PostLists />} />

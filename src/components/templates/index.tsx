@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Grid from '@material-ui/core/Grid';
 import classNames from 'classnames';
 import Paper from '@material-ui/core/Paper';
@@ -7,11 +7,17 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import PageHeader from 'components/organisms/pageHeader';
-import { newsData } from 'data/postData';
 import { useStyles } from 'components/styles';
 import photo from 'static/images/flower.jpg';
+import { NewsList } from 'data/postData';
 
-const Home = (): JSX.Element => {
+interface HomeProps {
+  list: NewsList;
+}
+
+const Home: FC<HomeProps> = ({
+  list
+}: HomeProps): JSX.Element => {
   const classes = useStyles();
 
   return (
@@ -20,7 +26,7 @@ const Home = (): JSX.Element => {
         <PageHeader
           description={'Front Engineer Blog Home'} 
           title="HOME" 
-          image={photo} 
+          image={photo}
         />
       </Grid>
       <Grid item xs={12}>
@@ -38,17 +44,17 @@ const Home = (): JSX.Element => {
             <div>
               <List>
                 {
-                  Object.entries(newsData).map(([key, value]): JSX.Element => (
+                  Object.entries(list).map(([key, item]): JSX.Element => (
                     <React.Fragment key={key}>
                       <ListItem className={classes.listBorder}>
                         <ListItemText
                           primary={
                             <React.Fragment>
-                              <span className={classes.textP12}>{value.title}</span>
-                              <span className={classNames(classes.textP8, classes.spaceLR1)}>{value.date}</span>
+                              <span className={classes.textP12}>{item.title}</span>
+                              <span className={classNames(classes.textP8, classes.spaceLR1)}>{item.date}</span>
                             </React.Fragment>
                           }
-                          secondary={<span className={classes.textP10}>{value.description}</span>}
+                          secondary={<span className={classes.textP10}>{item.description}</span>}
                         />
                       </ListItem>
                     </React.Fragment>
@@ -62,4 +68,5 @@ const Home = (): JSX.Element => {
     </Grid>
   )
 }
+
 export default Home;
