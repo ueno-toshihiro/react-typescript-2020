@@ -1,21 +1,24 @@
+import _ from 'lodash';
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BlogState } from 'reducer';
-import { getNews } from 'actions';
 import Home from 'components/templates'
-import { newsData } from 'data/postData';
-
+import { BlogState, newsData } from 'data/postData';
+import { getNewsList } from 'features/newsList';
 
 const HomeContainer: FC = (): JSX.Element => {
   const dispatch = useDispatch();
-  const news = useSelector<BlogState, BlogState['newsData']>((state) => state.newsData);
+  const newsList =
+    useSelector<BlogState, BlogState['newsList']>((state) => state.newsList);
 
   useEffect(() => {
-    dispatch(getNews(newsData));
-  });
+    if (_.isEqual(newsList, newsData)) {
+      return;
+    }
+    dispatch(getNewsList(newsData));
+  }, [dispatch, newsList]);
 
 
-  return <Home list={news} />
+  return <Home list={newsList} />
 }
 
 export default HomeContainer;

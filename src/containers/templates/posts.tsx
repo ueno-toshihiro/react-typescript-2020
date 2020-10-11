@@ -1,22 +1,26 @@
+import _ from 'lodash';
 import React, { FC, useEffect } from 'react';
 import { useLocation, Outlet } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { getPosts } from '../../actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPostList } from 'features/postList';
 import { Grid } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import PageHeader from 'components/organisms/pageHeader';
-import photo from 'static/images/park.jpg'
-
-import { postData } from 'data/postData';
+import photo from 'static/images/park.jpg';
+import { BlogState, postData } from 'data/postData';
 
 const Posts: FC = (): JSX.Element => {
   const location = useLocation();
   const dispatch = useDispatch();
+  const postList =
+    useSelector<BlogState, BlogState['postList']>((state) => state.postList);
 
   useEffect(() => {
-    dispatch(getPosts(postData));
-    // eslint-disable-next-line
-  }, []);
+    if (_.isEqual(postList, postData)) {
+      return;
+    }
+    dispatch(getPostList(postData));
+  }, [dispatch, postList]);
 
   return (
     <Grid container>
@@ -25,9 +29,9 @@ const Posts: FC = (): JSX.Element => {
           location.pathname === '/blog' && (
             <React.Fragment>
               <PageHeader
-                description={'技術ブログ'} 
-                title="BLOG" 
-                image={photo} 
+                description={'技術ブログ'}
+                title="BLOG"
+                image={photo}
               />
               <Divider />
             </React.Fragment>

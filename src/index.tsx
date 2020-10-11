@@ -1,25 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
-import { blogReducer, initialState } from './reducer';
 import * as serviceWorker from './serviceWorker';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-interface ExtendedWindow extends Window {
-  __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-}
+import { configureStore } from '@reduxjs/toolkit';
+import { rootReducer } from 'reducers';
 
-declare let window: ExtendedWindow;
-const composeReduxDevToolsEnhancers =
-  (typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
-
-const store = createStore(
-  blogReducer,
-  initialState,
-  composeReduxDevToolsEnhancers()
-);
+const store = configureStore({
+  reducer: rootReducer
+});
 
 ReactDOM.render(
   <Provider store={store}>

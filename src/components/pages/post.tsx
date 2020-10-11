@@ -3,21 +3,20 @@ import { useParams } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 import { useSelector } from 'react-redux';
-import { BlogState } from 'reducer';
+import { BlogState } from 'data/postData';
 
 import { useStyles } from 'components/styles';
 import { Grid, IconButton, Paper, Typography } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const Post: FC = ():JSX.Element => {
+  const classes = useStyles();
   const { slug } = useParams();
   const history = createBrowserHistory();
-  const postData = useSelector<BlogState, BlogState['postData']>((state) => state.postData);
+  const postList = useSelector<BlogState, BlogState['postList']>((state) => state.postList);
 
-  const post = postData[slug];
-  const classes = useStyles();
-  const { title, description } = post;
-  
+  if (!postList) return <div />;
+  const { title, description } = postList[slug];
 
   return (
     <Grid item xs={12}>

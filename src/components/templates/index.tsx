@@ -44,7 +44,7 @@ const Home: FC<HomeProps> = ({
             <div>
               <List>
                 {
-                  Object.entries(list).map(([key, item]): JSX.Element => (
+                  list && Object.entries(list).map(([key, item]): JSX.Element => (
                     <React.Fragment key={key}>
                       <ListItem className={classes.listBorder}>
                         <ListItemText

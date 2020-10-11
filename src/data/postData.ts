@@ -3,6 +3,11 @@ import ReduxIcon from 'static/images/redux.png';
 import MUIIcon from 'static/images/material_ui.svg';
 import RouterIcon from 'static/images/react-router.svg';
 
+export type BlogState = {
+  postList: PostList;
+  newsList: NewsList
+};
+
 export interface NavigationItem {
   path: string;
   title: string;
@@ -23,7 +28,7 @@ export const navigationItems: NavigationItem[] = [
   }
 ];
 
-export interface PostLists {
+export interface PostList {
   [id: string]: {
     date: string;
     description: string
@@ -34,7 +39,7 @@ export interface PostLists {
   }
 }
 
-export const postData: PostLists = {
+export const postData: PostList = {
   '1': {
     date: '2020/10/05',
     description: 'React router v6 beta を使ってみよう！',

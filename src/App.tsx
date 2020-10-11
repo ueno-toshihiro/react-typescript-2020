@@ -4,7 +4,7 @@ import Header from 'containers/templates/header';
 import HomeContainer from 'containers/templates';
 import About from 'components/templates/about';
 import Posts from 'containers/templates/posts';
-import PostLists from 'components/pages/postLists';
+import PostList from 'components/templates/postList';
 import Post from 'components/pages/post';
 import Container from '@material-ui/core/Container';
 
@@ -17,7 +17,7 @@ const App = (): JSX.Element => (
           <Route path="/" element={<HomeContainer />} />
           <Route path="about" element={<About />} />
           <Route path="blog" element={<Posts />}>
-            <Route path="/" element={<PostLists />} />
+            <Route path="/" element={<PostList />} />
             <Route path=":slug" element={<Post />} />
           </Route>
         </Route>
