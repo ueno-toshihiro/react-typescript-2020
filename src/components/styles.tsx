@@ -83,4 +83,11 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
     overflowX: 'auto',
   },
+  scrollList: {
+    backgroundColor: theme.palette.background.paper,
+    maxHeight: 600,
+    overflow: 'auto',
+    position: 'relative',
+    width: '100%',
+  },
 }));

@@ -92,7 +92,7 @@ export const newsData: NewsList = {
   },
   '2': {
     date: '2020/10/05',
-    description: 'react-router: 6.0.0-beta.0 は hooks 対応で使いやすいです。',
+    description: 'react-router: 6.0.0-beta.0 でルーティングも hooks に対応しました。',
     title: 'React router v6 beta',
   },
   '3': {
@@ -107,7 +107,12 @@ export const newsData: NewsList = {
   },
   '6': {
     date: '2020/10/07',
-    description: 'redux: 4.0 でサイトデータを Store に統一しました。',
+    description: 'redux: 4.0 でデータを Store に統一しました。',
     title: 'Redux v4',
+  },
+  '7': {
+    date: '2020/10/11',
+    description: 'redux-toolkit で reduce と action の実装を変更しました。',
+    title: 'Redux-toolkit',
   },
 };

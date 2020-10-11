@@ -42,7 +42,7 @@ const Home: FC<HomeProps> = ({
               News
             </Typography>
             <div>
-              <List>
+              <List className={classes.scrollList}>
                 {
                   list && Object.entries(list).map(([key, item]): JSX.Element => (
                     <React.Fragment key={key}>
@@ -58,7 +58,7 @@ const Home: FC<HomeProps> = ({
                         />
                       </ListItem>
                     </React.Fragment>
-                  ))
+                  )).reverse()
                 }
               </List>
             </div>
