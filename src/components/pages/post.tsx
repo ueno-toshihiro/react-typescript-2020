@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
+import _ from 'lodash';
 
 import { useSelector } from 'react-redux';
 import { BlogState } from 'data/postData';
@@ -15,7 +16,7 @@ const Post: FC = ():JSX.Element => {
   const history = createBrowserHistory();
   const postList = useSelector<BlogState, BlogState['postList']>((state) => state.postList);
 
-  if (!postList) return <div />;
+  if (_.isEmpty(postList)) return <div />;
   const { title, description } = postList[slug];
 
   return (
