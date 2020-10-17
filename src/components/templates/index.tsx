@@ -42,7 +42,7 @@ const Home: FC<HomeProps> = ({
               News
             </Typography>
             <div>
-              <List className={classes.scrollList}>
+              <List className={classes.scrollList} data-testid="news_list">
                 {
                   list && Object.entries(list).map(([key, item]): JSX.Element => (
                     <React.Fragment key={key}>
